@@ -1,0 +1,19 @@
+pkgname=alci-calamares-config
+_destname1="/etc"
+pkgver=21.01
+pkgrel=1
+pkgdesc="Calamares For ALCI"
+arch=('any')
+url="https://github.com/novousernx"
+license=('GPL3')
+makedepends=('git')
+depends=()
+conflicts=('alci-calamares-config-dev')
+provides=("${pkgname}")
+options=(!strip !emptydirs)
+source=(${pkgname}::"git+${url}/${pkgname}")
+sha256sums=('SKIP')
+package() {
+	install -dm755 ${pkgdir}${_destname1}
+	cp -r ${srcdir}/${pkgname}${_destname1}/* ${pkgdir}${_destname1}
+}
